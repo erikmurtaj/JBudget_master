@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="600.0" prefWidth="1164.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.pa.jbudget105126.View.GUI.JavaFXController">
+  <children>
+    <MenuBar prefHeight="25.0" prefWidth="955.0" VBox.vgrow="NEVER">
+      <menus>
+            <Menu mnemonicParsing="false" text="View">
+              <items>
+                <MenuItem fx:id="refresh_button" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
+              </items>
+            </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#about" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <SplitPane dividerPositions="0.11962134251290878, 0.6256454388984509" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <items>
+        <AnchorPane prefHeight="552.0" prefWidth="123.0">
+          <children>
+            <Label alignment="CENTER" layoutX="38.0" layoutY="93.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Menu" textAlignment="CENTER" wrapText="false">
+              <font>
+                <Font size="18.0" fx:id="x1" />
+              </font>
+              <textFill>
+                <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
+              </textFill>
+            </Label>
+                  <Button fx:id="transaction_button_menu" layoutX="27.0" layoutY="178.0" mnemonicParsing="false" onAction="#transaction_button_menu" text="Transactions" />
+                  <Text layoutX="19.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Balance :" underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="current_balance_text" layoutX="20.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="budgets_button_menu" layoutX="26.0" layoutY="263.0" mnemonicParsing="false" onAction="#budgets_button_menu" prefHeight="26.0" prefWidth="82.0" text="Budgets" />
+                  <Button fx:id="accounts_button_menu" layoutX="27.0" layoutY="138.0" mnemonicParsing="false" onAction="#accounts_button_menu" prefHeight="25.0" prefWidth="82.0" text="Accounts" />
+                  <Button fx:id="stats_button_menu" layoutX="26.0" layoutY="302.0" mnemonicParsing="false" onAction="#stats_button_menu" prefHeight="26.0" prefWidth="82.0" text="Stats" />
+                  <Button fx:id="categories_button_menu" layoutX="26.0" layoutY="220.0" mnemonicParsing="false" onAction="#categories_button_menu" prefHeight="26.0" prefWidth="82.0" text="Categories" />
+          </children>
+        </AnchorPane>
+        <ScrollPane prefHeight="551.0" prefWidth="707.0">
+          <content>
+            <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="540.0" prefWidth="566.0">
+              <children>
+                        <VBox fx:id="accounts_vbox" alignment="CENTER" layoutX="1.0" layoutY="4.0" prefHeight="541.0" prefWidth="581.0" spacing="10.0" visible="false">
+                           <children>
+                      <Label alignment="CENTER" font="$x1" prefHeight="27.0" prefWidth="104.0" style="&#10;" text="Accounts" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+                              <Button fx:id="addAccount_button" mnemonicParsing="false" onAction="#addAccount_clicked" prefHeight="25.0" prefWidth="98.0" text="Add Account" />
+                              <Button fx:id="transfer_button" mnemonicParsing="false" onAction="#transfer_button_clicked" prefHeight="25.0" prefWidth="101.0" text="Make a transfer" />
+                              <TableView fx:id="accountsTable" onMouseClicked="#userClickedOnAccountsTable" prefHeight="356.0" prefWidth="555.0" />
+                              <Button fx:id="removeAccount_button" disable="true" mnemonicParsing="false" onAction="#removeAccount_clicked" text="Remove Account" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="transactions_vbox" alignment="CENTER" layoutY="6.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="541.0" prefWidth="582.0" spacing="10.0" visible="false">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="27.0" prefWidth="104.0" style="&#10;" text="Transactions" textAlignment="CENTER" wrapText="false">
+                                 <font>
+                                    <Font size="18.0" fx:id="x11" />
+                                 </font>
+                                 <textFill>
+                                    <Color blue="0.624" green="0.624" red="0.624" fx:id="x21" />
+                                 </textFill>
+                              </Label>
+                              <Button fx:id="addTransaction_button" mnemonicParsing="false" onAction="#addTransaction_clicked" text="Add Transaction" textAlignment="CENTER" />
+                              <TableView fx:id="transactionsTable" onMouseClicked="#userClickedOnTransactionTable" prefHeight="175.0" prefWidth="572.0" />
+                              <Button fx:id="removeTransaction_button" disable="true" mnemonicParsing="false" onAction="#removeTransaction_clicked" text="Remove Transaction" />
+                              <Label alignment="CENTER" prefHeight="27.0" prefWidth="201.0" style="&#10;" text="Scheduled Transactions" textAlignment="CENTER" wrapText="false">
+                                 <font>
+                                    <Font size="18.0" fx:id="x111" />
+                                 </font>
+                                 <textFill>
+                                    <Color blue="0.624" green="0.624" red="0.624" fx:id="x211" />
+                                 </textFill>
+                              </Label>
+                              <TableView fx:id="scheduled_transactionsTable" onMouseClicked="#userClickedOnScheduledTransactionTable" prefHeight="178.0" prefWidth="581.0" />
+                              <Button fx:id="removeScheduledTransaction_button" disable="true" mnemonicParsing="false" onAction="#removeScheduledTransaction_clicked" text="Remove Scheduled Transaction" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="budgets_vbox" alignment="CENTER" layoutY="3.0" prefHeight="542.0" prefWidth="582.0" spacing="10.0" visible="false">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="27.0" prefWidth="104.0" style="&#10;" text="Budgets" textAlignment="CENTER" wrapText="false">
+                                 <font>
+                                    <Font size="18.0" fx:id="x12" />
+                                 </font>
+                                 <textFill>
+                                    <Color blue="0.624" green="0.624" red="0.624" fx:id="x22" />
+                                 </textFill>
+                              </Label>
+                              <Button fx:id="addBudget_button" mnemonicParsing="false" onAction="#addBudget_clicked" text="Add Budget" />
+                              <TableView fx:id="budgetsTable" onMouseClicked="#userClickedOnBudgetsTable" prefHeight="356.0" prefWidth="567.0" />
+                              <Button fx:id="removeBudget_button" disable="true" mnemonicParsing="false" onAction="#removeBudget_clicked" text="Remove Budget" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="categeories_vbox" alignment="CENTER" layoutX="6.0" layoutY="12.0" prefHeight="524.0" prefWidth="561.0" spacing="10.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="27.0" prefWidth="104.0" style="&#10;" text="Categories" textAlignment="CENTER" wrapText="false">
+                                 <font>
+                                    <Font size="18.0" fx:id="x121" />
+                                 </font>
+                                 <textFill>
+                                    <Color blue="0.624" green="0.624" red="0.624" fx:id="x221" />
+                                 </textFill>
+                              </Label>
+                              <Button fx:id="addCategory_button" mnemonicParsing="false" onAction="#addCategory_clicked" text="Add Category" />
+                              <TreeTableView fx:id="categoriesTable" onMouseClicked="#userClickedOnCategoriesTable" prefHeight="200.0" prefWidth="560.0" />
+                              <Button fx:id="removeCategory_button" disable="true" mnemonicParsing="false" onAction="#removeCategory_clicked" text="Remove Category" />
+                           </children>
+                        </VBox>
+              </children>
+            </AnchorPane>
+          </content>
+        </ScrollPane>
+        <AnchorPane prefHeight="552.0" prefWidth="411.0">
+          <children>
+            <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+                  <TableView fx:id="movementsTable" layoutX="21.0" layoutY="141.0" prefHeight="231.0" prefWidth="396.0" visible="false" />
+                  <Button fx:id="addMovement_button" layoutX="21.0" layoutY="385.0" mnemonicParsing="false" onAction="#addMovement_clicked" text="Add Movement" visible="false" />
+                  <Text fx:id="reportBudget_text" layoutX="34.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="report_text" layoutX="21.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difference between amount expected and spent:">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+  </children>
+</VBox>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="375.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.pa.jbudget105126.View.GUI.JavaFXNewBudgetController">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="365.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Text layoutX="31.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adding a new budget">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+            <TextField fx:id="nameBudget_value" layoutX="215.0" layoutY="83.0" />
+            <Text layoutX="89.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button fx:id="addNewBudget_button" layoutX="238.0" layoutY="281.0" mnemonicParsing="false" onAction="#addNewBudget_button" text="Add New Budget">
+               <font>
+                  <Font name="System Italic" size="19.0" />
+               </font>
+            </Button>
+            <Text layoutX="89.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <ChoiceBox fx:id="categoryBudget_value" layoutX="214.0" layoutY="136.0" prefWidth="150.0" />
+            <Button fx:id="addNewCategory_button" layoutX="424.0" layoutY="136.0" mnemonicParsing="false" onAction="#addNewCategory_clicked" text="Add new Category" />
+            <Text layoutX="89.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expected">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="expectedBudget_value" layoutX="215.0" layoutY="194.0" />
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
